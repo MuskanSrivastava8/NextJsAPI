@@ -14,7 +14,7 @@ export default async function Userapi() {
       {users.map((item) => (
         <li>
           <Link href={`userapi/${item.id}`}>{item.id}{item.name}</Link>
-          <span><Link href={`userapi/${item.id}/update`}>Edit</Link></span>
+          <span><Link href={`userapi/${item.id}/update`}>Edits</Link></span>
         </li>
       ))}
     </>
