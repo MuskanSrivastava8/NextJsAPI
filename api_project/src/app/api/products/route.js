@@ -1,10 +1,17 @@
+import { Product } from "@/lib/model/product";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
+import { ConnectDB } from "@/lib/db";
 
+ConnectDB();
 export async function GET(params) {
-  await mongoose
-    .connect(process.env.connectionSrt)
-    .then((result) => console.log("connected to db"))
-    .catch((err) => console.log(err));
-  return NextResponse.json({ result: true });
+  const data = await Product.find();
+  return NextResponse.json({ result: data });
+}
+
+export async function POST(request) {
+  const payload = await request.json();
+  let product = new Product(payload);
+  const result = await product.save();
+  return NextResponse.json({ result, success: true });
 }
