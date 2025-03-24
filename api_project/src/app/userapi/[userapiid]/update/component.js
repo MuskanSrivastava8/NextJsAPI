@@ -18,7 +18,6 @@ export default function Component(props) {
       method: "PUT",
       body: JSON.stringify({ name, id, age }),
     });
-    console.log(response);
 
   };
 

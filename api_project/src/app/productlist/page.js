@@ -11,7 +11,7 @@ const getProducts = async () => {
 };
 export default async function ProductList() {
   const product = await getProducts();
-  product.map((item) => console.log(item.name));
+
 
   return (
     <>

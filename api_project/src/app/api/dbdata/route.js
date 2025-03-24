@@ -7,7 +7,6 @@ export function GET(request){
 }
 export async function POST(request, response){
     const payload = await request.json()
-    console.log(payload)
     if(!payload.name || !payload.id){
         return NextResponse.json({result:"Data not found", success :false},{status:211})
     }

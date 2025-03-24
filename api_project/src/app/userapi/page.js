@@ -7,7 +7,6 @@ async function getUserapi() {
 }
 export default async function Userapi() {
   const users = await getUserapi();
-  console.log(users);
   return (
     <>
       userList

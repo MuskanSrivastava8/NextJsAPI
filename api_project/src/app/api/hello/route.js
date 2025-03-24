@@ -4,6 +4,5 @@ import { ConnectDB } from "@/lib/db";
 
 export async function GET(params) {
   const data = await Product.find();
- // console.log(data);
   return NextResponse.json({ result: data});
 }

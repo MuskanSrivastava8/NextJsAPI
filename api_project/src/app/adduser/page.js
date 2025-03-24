@@ -10,7 +10,6 @@ export default  function Adduser() {
     body:JSON.stringify({name, id, age})
     })
     let data = await response.json();
-    console.log(data)
   }
   return (
     <>
