@@ -18,3 +18,12 @@ export async function GET(request, content) {
     const result = await Product.findById(record);
     return NextResponse.json({ result, success: true });
   }
+  export async function DELETE(request, content) {
+    const productIdres = await content;
+    const params = await productIdres.params;
+    const productId = params.productid;
+    const record={ _id: productId };
+    const result = await Product.deleteOne(record);
+    return NextResponse.json({ result, success: true });
+
+  }

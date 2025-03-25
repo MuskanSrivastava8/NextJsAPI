@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { Btncomponent } from "./btnDelete/page";
 
 const getProducts = async () => {
-  let data = await fetch("http://localhost:3000/api/products");
+  let data = await fetch("http://localhost:3000/api/products", {cache:"no-cache"});
   data = await data.json();
   if (data.success) {
     return data.result;
@@ -11,7 +12,6 @@ const getProducts = async () => {
 };
 export default async function ProductList() {
   const product = await getProducts();
-
 
   return (
     <>
@@ -25,19 +25,22 @@ export default async function ProductList() {
             <td>CATAGORY</td>
             <td>COMPANY</td>
             <td>EDIT</td>
-
           </tr>
         </thead>
         <tbody>
           {product.map((item) => (
-            <tr>
+            <tr key={item._id}>
               <td>{item.name}</td>
               <td>{item.price}</td>
               <td>{item.color}</td>
               <td>{item.catagory}</td>
               <td>{item.company}</td>
-              <td><Link href={"productlist/"+item._id}>Edit</Link></td>
-
+              <td>
+                <Link href={"productlist/" + item._id}>Edit</Link>
+              </td>
+              <td key={item._id} >
+                <Btncomponent id={item._id} />
+              </td>
             </tr>
           ))}
         </tbody>
